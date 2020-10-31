@@ -8,7 +8,7 @@ RUN cd /usr/local/dnsproxy && go build -mod=vendor
 
 EXPOSE 80
 EXPOSE 443
-EXPOSE 784
+EXPOSE 784/udp
 EXPOSE 853
 
 COPY docker-entrypoint.sh /usr/local/bin/

@@ -1,12 +1,14 @@
 # dns-qwic
 Docker for a DNS over Qwic server
 
-
 ## Usage
 
+```sh
 docker run --name dns-qwic \
--p 784:784 \
+--restart always \
+-p 784:784/udp \
 -p 443:443 \
 -p 853:853 \
 -p 80:80 \
-chriskacerguis/dns-qwic
+-d chriskacerguis/dns-qwic
+```
