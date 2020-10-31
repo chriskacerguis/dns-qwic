@@ -1,9 +1,13 @@
 FROM golang:1.15-buster
 
+WORKDIR /usr/local
+
 RUN git clone https://github.com/AdguardTeam/dnsproxy.git
 
-RUN cd dnsproxy && go build -mod=vendor
+RUN cd /usr/local/dnsproxy && go build -mod=vendor
+
+EXPOSE 784
 
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s /usr/local/bin/docker-entrypoint.sh /
-CMD ["docker-entrypoint.sh"]
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /
+CMD ["/docker-entrypoint.sh"]
